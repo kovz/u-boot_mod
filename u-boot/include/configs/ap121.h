@@ -210,6 +210,16 @@
 	#define CONFIG_QCA_GPIO_MASK_OUT_INIT_H	CONFIG_QCA_GPIO_MASK_LED_ACT_L
 	#define CONFIG_QCA_GPIO_MASK_OUT_INIT_L	CONFIG_QCA_GPIO_MASK_LED_ACT_H
 
+#elif defined(CONFIG_FOR_ZINWELL_PWQ_5101_V1)
+
+	#define CONFIG_QCA_GPIO_MASK_LED_ACT_H	GPIO0  | GPIO1
+	#define CONFIG_QCA_GPIO_MASK_LED_ACT_L	GPIO17
+	#define CONFIG_QCA_GPIO_MASK_OUT	CONFIG_QCA_GPIO_MASK_LED_ACT_L |\
+						CONFIG_QCA_GPIO_MASK_LED_ACT_H
+	#define CONFIG_QCA_GPIO_MASK_IN		GPIO11 | GPIO12
+	#define CONFIG_QCA_GPIO_MASK_OUT_INIT_H	CONFIG_QCA_GPIO_MASK_LED_ACT_L
+	#define CONFIG_QCA_GPIO_MASK_OUT_INIT_L	CONFIG_QCA_GPIO_MASK_LED_ACT_H
+
 #endif
 
 /*
@@ -293,6 +303,10 @@
 				"rootfstype=squashfs init=/sbin/init "\
 				"mtdparts=ar7240-nor0:128k(u-boot),1024k(kernel),6912k(rootfs),64k(config),64k(art)"
 
+#elif defined(CONFIG_FOR_ZINWELL_PWQ_5101_V1)
+	#define CONFIG_BOOTARGS	"console=ttyS0,115200 root=31:02 "\
+				"rootfstype=squashfs init=/sbin/init "\
+				"mtdparts=ar7240-nor0:64k(u-boot),64k(u-boot-env),2496k(rootfs),896k(uImage),448k(jffs2fs),64k(NVRAM),64k(ART)"
 #endif
 
 /*
@@ -314,6 +328,8 @@
 #elif defined(CONFIG_FOR_DRAGINO_V2) ||\
       defined(CONFIG_FOR_MESH_POTATO_V2)
 	#define CFG_LOAD_ADDR	0x9F040000
+#elif defined(CONFIG_FOR_ZINWELL_PWQ_5101_V1)
+	#define CFG_LOAD_ADDR   0X9F290000
 #else
 	#define CFG_LOAD_ADDR	0x9F020000
 #endif
@@ -353,6 +369,10 @@
 	#define CFG_ENV_ADDR		0x9F030000
 	#define CFG_ENV_SIZE		0x8000
 	#define CFG_ENV_SECT_SIZE	0x10000
+#elif defined(CONFIG_FOR_ZINWELL_PWQ_5101_V1)
+        #define CFG_ENV_ADDR            0x9F010000
+        #define CFG_ENV_SIZE            0x8000
+        #define CFG_ENV_SECT_SIZE       0x10000
 #else
 	#define CFG_ENV_ADDR		0x9F01EC00
 	#define CFG_ENV_SIZE		0x1000

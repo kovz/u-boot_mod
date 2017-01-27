@@ -744,6 +744,11 @@ zbtlink_zbt-we1526: qca953x_common
 	@$(call define_add,CFG_ATH_GMAC_NMACS,2)
 	@$(MKCONFIG) -a ap143 mips mips ap143 ar7240 ar7240
 
+zinwell_pwq-5101: ar933x_common
+	@$(call config_init,ZINWELL pwq-5101,pwq-5101,4,11,1,QCA_AR933X_SOC)
+	@$(call define_add,CONFIG_FOR_ZINWELL_PWQ_5101_V1,1)
+	@$(MKCONFIG) -a ap121 mips mips ap121 ar7240 ar7240
+
 # =============
 # CLEAN TARGETS
 # =============

@@ -218,7 +218,8 @@ COMMON_AR933X_TARGETS = \
 	tp-link_tl-wr703n_v1 \
 	tp-link_tl-wr710n_v1 \
 	tp-link_tl-wr720n_v3_CN \
-	tp-link_tl-wr740n_v4
+	tp-link_tl-wr740n_v4 \
+	zinwell_pwq-5101
 
 $(COMMON_AR933X_TARGETS):
 	@$(call build,123,1)
